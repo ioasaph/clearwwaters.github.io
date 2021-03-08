@@ -1,0 +1,13779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: exports</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: exports</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Hey, if you're reading this I'd appreciate some feedback!
+This is my first powercord plugin, so please tell me if I'm doing something incorrectly.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_plugins_powercord-reverse-image-search_index.js.html">src/Powercord/plugins/powercord-reverse-image-search/index.js</a>, <a href="src_Powercord_plugins_powercord-reverse-image-search_index.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".all"><span class="type-signature">(static) </span>all<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    A function that helps run functions under a concurrent limitation.
+To run functions sequentially, use `yaku/lib/flow`.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var kit = require('nokit');
+var all = require('yaku/lib/all');
+
+var urls = [
+    'http://a.com',
+    'http://b.com',
+    'http://c.com',
+    'http://d.com'
+];
+var tasks = function * () {
+    var i = 0;
+    yield kit.request(url[i++]);
+    yield kit.request(url[i++]);
+    yield kit.request(url[i++]);
+    yield kit.request(url[i++]);
+}();
+
+all(tasks).then(() => kit.log('all done!'));
+
+all(2, tasks).then(() => kit.log('max concurrent limit is 2'));
+
+all(3, { next: () => {
+    var url = urls.pop();
+    return {
+         done: !url,
+         value: url &amp;&amp; kit.request(url)
+    };
+} })
+.then(() => kit.log('all done!'));
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".any"><span class="type-signature">(static) </span>any<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Similar with the `Promise.race`, but only rejects when every entry rejects.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var any = require('yaku/lib/any');
+any([
+    123,
+    Promise.resolve(0),
+    Promise.reject(new Error("ERR"))
+])
+.then((value) => {
+    console.log(value); // => 123
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".async"><span class="type-signature">(static) </span>async<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Generator based async/await wrapper.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var async = require('yaku/lib/async');
+var sleep = require('yaku/lib/sleep');
+
+var fn = async(function * () {
+    return yield sleep(1000, 'ok');
+});
+
+fn().then(function (v) {
+    console.log(v);
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".callbackify"><span class="type-signature">(static) </span>callbackify<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    If a function returns promise, convert it to
+node callback style function.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line94">line 94</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".Deferred"><span class="type-signature">(static) </span>Deferred<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    **deprecate** Create a `jQuery.Deferred` like object.
+It will cause some buggy problems, please don't use it.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line100">line 100</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".flow"><span class="type-signature">(static) </span>flow<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Creates a function that is the composition of the provided functions.
+See `yaku/lib/async`, if you need concurrent support.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>It helps to decouple sequential pipeline code logic.
+```js
+var kit = require('nokit');
+var flow = require('yaku/lib/flow');
+
+function createUrl (name) {
+    return "http://test.com/" + name;
+}
+
+function curl (url) {
+    return kit.request(url).then((body) => {
+        kit.log('get');
+        return body;
+    });
+}
+
+function save (str) {
+    kit.outputFile('a.txt', str).then(() => {
+        kit.log('saved');
+    });
+}
+
+var download = flow(createUrl, curl, save);
+// same as "download = flow([createUrl, curl, save])"
+
+download('home');
+```</code></pre>
+
+    <pre class="prettyprint"><code>Walk through first link of each page.
+```js
+var kit = require('nokit');
+var flow = require('yaku/lib/flow');
+
+var list = [];
+function iter (url) {
+    return {
+        done: !url,
+        value: url &amp;&amp; kit.request(url).then((body) => {
+            list.push(body);
+            var m = body.match(/href="(.+?)"/);
+            if (m) return m[0];
+        });
+    };
+}
+
+var walker = flow(iter);
+walker('test.com');
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".guard"><span class="type-signature">(static) </span>guard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Enable a helper to catch specific error type.
+It will be directly attach to the prototype of the promise.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line187">line 187</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".if"><span class="type-signature">(static) </span>if<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    if-else helper
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line207">line 207</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var Promise = require('yaku');
+var yutils = require('yaku/lib/utils');
+
+yutils.if(Promise.resolve(false), () => {
+    // true
+}, () => {
+    // false
+})
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".isNode"><span class="type-signature">(static) </span>isNode<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    True if this is running in Nodejs, will be undefined in a browser.
+In a browser, browserify won't include this file and the whole module
+will be resolved an empty object.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".isPromise"><span class="type-signature">(static) </span>isPromise<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    **deprecate** Check if an object is a promise-like object.
+Don't use it to coercive a value to Promise, instead use `Promise.resolve`.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line215">line 215</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".never"><span class="type-signature">(static) </span>never<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Create a promise that never ends.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line221">line 221</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".Observable"><span class="type-signature">(static) </span>Observable<span class="type-signature"> :function</span></h4>
+
+
+
+
+<div class="description">
+    Read the `Observable` section.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line269">line 269</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".promisify"><span class="type-signature">(static) </span>promisify<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Convert a node callback style function to a function that returns
+promise when the last callback is not supplied.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line250">line 250</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var promisify = require('yaku/lib/promisify');
+function foo (val, cb) {
+    setTimeout(() => {
+        cb(null, val + 1);
+    });
+}
+
+var bar = promisify(foo);
+
+bar(0).then((val) => {
+    console.log val // output => 1
+});
+
+// It also supports the callback style.
+bar(0, (err, val) => {
+    console.log(val); // output => 1
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".retry"><span class="type-signature">(static) </span>retry<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Retry a function until it resolves before a mount of times, or reject with all
+the error states.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line319">line 319</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>Retry 3 times before rejection, wait 1 second before each retry.
+```js
+var retry = require('yaku/lib/retry');
+var { request } = require('nokit');
+
+retry(3, 1000, request)('http://test.com').then(
+   (body) => console.log(body),
+   (errs) => console.error(errs)
+);
+```</code></pre>
+
+    <pre class="prettyprint"><code>Here a more complex retry usage, it shows an random exponential backoff algorithm to
+wait and retry again, which means the 10th attempt may take 10 minutes to happen.
+```js
+var retry = require('yaku/lib/retry');
+var sleep = require('yaku/lib/sleep');
+var { request } = require('nokit');
+
+function countdown (retries) {
+   var attempt = 0;
+   return async () => {
+        var r = Math.random() * Math.pow(2, attempt) * 1000;
+        var t = Math.min(r, 1000 * 60 * 10);
+        await sleep(t);
+        return attempt++ &lt; retries;
+   };
+}
+
+retry(countdown(10), request)('http://test.com').then(
+   (body) => console.log(body),
+   (errs) => console.error(errs)
+);
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".sleep"><span class="type-signature">(static) </span>sleep<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Create a promise that will wait for a while before resolution.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line263">line 263</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var sleep = require('yaku/lib/sleep');
+sleep(1000).then(() => console.log('after one second'));
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".throw"><span class="type-signature">(static) </span>throw<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Throw an error to break the program.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line333">line 333</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var ythrow = require('yaku/lib/throw');
+Promise.resolve().then(() => {
+    // This error won't be caught by promise.
+    ythrow('break the program!');
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="~atcharset"><span class="type-signature">(inner) </span>atcharset<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Parse charset
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line502">line 502</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~atimport"><span class="type-signature">(inner) </span>atimport<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Parse import
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line496">line 496</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~atnamespace"><span class="type-signature">(inner) </span>atnamespace<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Parse namespace
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line508">line 508</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~errorsList"><span class="type-signature">(inner) </span>errorsList<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Error `msg`.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~lineno"><span class="type-signature">(inner) </span>lineno<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Positional.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".allocBuffer"><span class="type-signature">(static) </span>allocBuffer<span class="signature">(size)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a new nodejs Buffer with the specified size.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>size</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the size of the buffer.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    a new Buffer.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Buffer</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".close"><span class="type-signature">(static) </span>close<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the currently opened modal
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_modal.js.html">src/fake_node_modules/powercord/modal.js</a>, <a href="src_fake_node_modules_powercord_modal.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".closeAll"><span class="type-signature">(static) </span>closeAll<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes all modals
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_modal.js.html">src/fake_node_modules/powercord/modal.js</a>, <a href="src_fake_node_modules_powercord_modal.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".del"><span class="type-signature">(static) </span>del<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a DELETE request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".extglobChars"><span class="type-signature">(static) </span>extglobChars<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create EXTGLOB_CHARS
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_picomatch_lib_constants.js.html">node_modules/picomatch/lib/constants.js</a>, <a href="node_modules_picomatch_lib_constants.js.html#line162">line 162</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".get"><span class="type-signature">(static) </span>get<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a GET request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".globChars"><span class="type-signature">(static) </span>globChars<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create GLOB_CHARS
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_picomatch_lib_constants.js.html">node_modules/picomatch/lib/constants.js</a>, <a href="node_modules_picomatch_lib_constants.js.html#line176">line 176</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".head"><span class="type-signature">(static) </span>head<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a HEAD request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isBuffer"><span class="type-signature">(static) </span>isBuffer<span class="signature">(b)</span><span class="type-signature"> &rarr; {<a href="global.html#Boolean">Boolean</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Find out if an object is a Buffer.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the object to test.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true if the object is a Buffer, false otherwise.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Boolean">Boolean</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".newBufferFrom"><span class="type-signature">(static) </span>newBufferFrom<span class="signature">(data, encoding)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a new nodejs Buffer from an existing content.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the data to pass to the constructor.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the encoding to use.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    a new Buffer.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Buffer</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".open"><span class="type-signature">(static) </span>open<span class="signature">(Component)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens a new modal
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Component</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">React.Component</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_modal.js.html">src/fake_node_modules/powercord/modal.js</a>, <a href="src_fake_node_modules_powercord_modal.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".post"><span class="type-signature">(static) </span>post<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a POST request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".put"><span class="type-signature">(static) </span>put<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a PUT request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeAnnouncement"><span class="type-signature"></span>closeAnnouncement<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes an announcement
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Announcement ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:announcementClosed</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeToast"><span class="type-signature"></span>closeToast<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes a toast
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Toast ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:toastLeaving</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="from"><span class="type-signature"></span>from<span class="signature">(promise)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an AsyncComponent from a promise
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>promise</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Promise</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Promise of a React component</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_components_AsyncComponent.js.html">src/fake_node_modules/powercord/components/AsyncComponent.js</a>, <a href="src_fake_node_modules_powercord_components_AsyncComponent.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="sendAnnouncement"><span class="type-signature"></span>sendAnnouncement<span class="signature">(id, props)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sends an announcement to the user (banner at the top of the client)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Announcement ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PowercordAnnouncement">PowercordAnnouncement</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Announcement</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:announcementAdded</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="sendToast"><span class="type-signature"></span>sendToast<span class="signature">(id, props)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sends a toast to the user
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Toast ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PowercordToast">PowercordToast</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Toast</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line79">line 79</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:toastAdded</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~_compileAtrule"><span class="type-signature">(inner) </span>_compileAtrule<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse non-block at-rules
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line515">line 515</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atcustommedia"><span class="type-signature">(inner) </span>atcustommedia<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse custom-media.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line397">line 397</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atdocument"><span class="type-signature">(inner) </span>atdocument<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse document.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line443">line 443</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atfontface"><span class="type-signature">(inner) </span>atfontface<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse font-face.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line469">line 469</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~athost"><span class="type-signature">(inner) </span>athost<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse host.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line350">line 350</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atkeyframes"><span class="type-signature">(inner) </span>atkeyframes<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse keyframes.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line291">line 291</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atmedia"><span class="type-signature">(inner) </span>atmedia<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse media.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line372">line 372</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atpage"><span class="type-signature">(inner) </span>atpage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse paged media.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line413">line 413</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atrule"><span class="type-signature">(inner) </span>atrule<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse at rule.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line531">line 531</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atsupports"><span class="type-signature">(inner) </span>atsupports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse supports.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line326">line 326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~close"><span class="type-signature">(inner) </span>close<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closing brace.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line105">line 105</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~comment"><span class="type-signature">(inner) </span>comment<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse comment.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line167">line 167</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~comments"><span class="type-signature">(inner) </span>comments<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse comments;
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~declaration"><span class="type-signature">(inner) </span>declaration<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse declaration.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line215">line 215</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~declarations"><span class="type-signature">(inner) </span>declarations<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse declarations.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line245">line 245</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~fn"><span class="type-signature">(inner) </span>fn<span class="signature">(url, enc)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The path to the image you want to encode.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>enc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The encoding for the image. Defaults to base64, the 
+other valid option is `utf8`.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_lib_functions_url.js.html">node_modules/stylus/lib/functions/url.js</a>, <a href="node_modules_stylus_lib_functions_url.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~keyframe"><span class="type-signature">(inner) </span>keyframe<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse keyframe.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line268">line 268</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~match"><span class="type-signature">(inner) </span>match<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Match `re` and return captures.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line131">line 131</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~open"><span class="type-signature">(inner) </span>open<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opening brace.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line97">line 97</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~position"><span class="type-signature">(inner) </span>position<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Mark position and patch `node.position`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~Position"><span class="type-signature">(inner) </span>Position<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Store position information for a node
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~rule"><span class="type-signature">(inner) </span>rule<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse rule.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line551">line 551</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~rules"><span class="type-signature">(inner) </span>rules<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse ruleset.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~selector"><span class="type-signature">(inner) </span>selector<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse selector.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line195">line 195</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~stylesheet"><span class="type-signature">(inner) </span>stylesheet<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse stylesheet.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~toCSS"><span class="type-signature">(inner) </span>toCSS<span class="signature">(options, filePath, callback)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filePath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_less_test_less-test.js.html">node_modules/less/test/less-test.js</a>, <a href="node_modules_less_test_less-test.js.html#line478">line 478</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~updatePosition"><span class="type-signature">(inner) </span>updatePosition<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Update lineno and column based on `str`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~whitespace"><span class="type-signature">(inner) </span>whitespace<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse whitespace.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line144">line 144</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    
+    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>toasts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a>:<a href="global.html"></a>.&lt;<a href="global.html#String">String</a>:<a href="global.html"></a>, <a href="global.html#PowercordToast">PowercordToast</a>:<a href="global.html"></a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>announcements</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a>:<a href="global.html"></a>.&lt;<a href="global.html#String">String</a>:<a href="global.html"></a>, <a href="global.html#PowercordAnnouncement">PowercordAnnouncement</a>:<a href="global.html"></a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".all"><span class="type-signature">(static) </span>all<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    A function that helps run functions under a concurrent limitation.
+To run functions sequentially, use `yaku/lib/flow`.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var kit = require('nokit');
+var all = require('yaku/lib/all');
+
+var urls = [
+    'http://a.com',
+    'http://b.com',
+    'http://c.com',
+    'http://d.com'
+];
+var tasks = function * () {
+    var i = 0;
+    yield kit.request(url[i++]);
+    yield kit.request(url[i++]);
+    yield kit.request(url[i++]);
+    yield kit.request(url[i++]);
+}();
+
+all(tasks).then(() => kit.log('all done!'));
+
+all(2, tasks).then(() => kit.log('max concurrent limit is 2'));
+
+all(3, { next: () => {
+    var url = urls.pop();
+    return {
+         done: !url,
+         value: url &amp;&amp; kit.request(url)
+    };
+} })
+.then(() => kit.log('all done!'));
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".any"><span class="type-signature">(static) </span>any<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Similar with the `Promise.race`, but only rejects when every entry rejects.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var any = require('yaku/lib/any');
+any([
+    123,
+    Promise.resolve(0),
+    Promise.reject(new Error("ERR"))
+])
+.then((value) => {
+    console.log(value); // => 123
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".async"><span class="type-signature">(static) </span>async<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Generator based async/await wrapper.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var async = require('yaku/lib/async');
+var sleep = require('yaku/lib/sleep');
+
+var fn = async(function * () {
+    return yield sleep(1000, 'ok');
+});
+
+fn().then(function (v) {
+    console.log(v);
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".callbackify"><span class="type-signature">(static) </span>callbackify<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    If a function returns promise, convert it to
+node callback style function.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line94">line 94</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".Deferred"><span class="type-signature">(static) </span>Deferred<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    **deprecate** Create a `jQuery.Deferred` like object.
+It will cause some buggy problems, please don't use it.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line100">line 100</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".flow"><span class="type-signature">(static) </span>flow<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Creates a function that is the composition of the provided functions.
+See `yaku/lib/async`, if you need concurrent support.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>It helps to decouple sequential pipeline code logic.
+```js
+var kit = require('nokit');
+var flow = require('yaku/lib/flow');
+
+function createUrl (name) {
+    return "http://test.com/" + name;
+}
+
+function curl (url) {
+    return kit.request(url).then((body) => {
+        kit.log('get');
+        return body;
+    });
+}
+
+function save (str) {
+    kit.outputFile('a.txt', str).then(() => {
+        kit.log('saved');
+    });
+}
+
+var download = flow(createUrl, curl, save);
+// same as "download = flow([createUrl, curl, save])"
+
+download('home');
+```</code></pre>
+
+    <pre class="prettyprint"><code>Walk through first link of each page.
+```js
+var kit = require('nokit');
+var flow = require('yaku/lib/flow');
+
+var list = [];
+function iter (url) {
+    return {
+        done: !url,
+        value: url &amp;&amp; kit.request(url).then((body) => {
+            list.push(body);
+            var m = body.match(/href="(.+?)"/);
+            if (m) return m[0];
+        });
+    };
+}
+
+var walker = flow(iter);
+walker('test.com');
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".guard"><span class="type-signature">(static) </span>guard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Enable a helper to catch specific error type.
+It will be directly attach to the prototype of the promise.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line187">line 187</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".if"><span class="type-signature">(static) </span>if<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    if-else helper
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line207">line 207</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var Promise = require('yaku');
+var yutils = require('yaku/lib/utils');
+
+yutils.if(Promise.resolve(false), () => {
+    // true
+}, () => {
+    // false
+})
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".isNode"><span class="type-signature">(static) </span>isNode<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    True if this is running in Nodejs, will be undefined in a browser.
+In a browser, browserify won't include this file and the whole module
+will be resolved an empty object.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".isPromise"><span class="type-signature">(static) </span>isPromise<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    **deprecate** Check if an object is a promise-like object.
+Don't use it to coercive a value to Promise, instead use `Promise.resolve`.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line215">line 215</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".never"><span class="type-signature">(static) </span>never<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Create a promise that never ends.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line221">line 221</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".Observable"><span class="type-signature">(static) </span>Observable<span class="type-signature"> :function</span></h4>
+
+
+
+
+<div class="description">
+    Read the `Observable` section.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line269">line 269</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".promisify"><span class="type-signature">(static) </span>promisify<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Convert a node callback style function to a function that returns
+promise when the last callback is not supplied.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line250">line 250</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var promisify = require('yaku/lib/promisify');
+function foo (val, cb) {
+    setTimeout(() => {
+        cb(null, val + 1);
+    });
+}
+
+var bar = promisify(foo);
+
+bar(0).then((val) => {
+    console.log val // output => 1
+});
+
+// It also supports the callback style.
+bar(0, (err, val) => {
+    console.log(val); // output => 1
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".retry"><span class="type-signature">(static) </span>retry<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Retry a function until it resolves before a mount of times, or reject with all
+the error states.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line319">line 319</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>Retry 3 times before rejection, wait 1 second before each retry.
+```js
+var retry = require('yaku/lib/retry');
+var { request } = require('nokit');
+
+retry(3, 1000, request)('http://test.com').then(
+   (body) => console.log(body),
+   (errs) => console.error(errs)
+);
+```</code></pre>
+
+    <pre class="prettyprint"><code>Here a more complex retry usage, it shows an random exponential backoff algorithm to
+wait and retry again, which means the 10th attempt may take 10 minutes to happen.
+```js
+var retry = require('yaku/lib/retry');
+var sleep = require('yaku/lib/sleep');
+var { request } = require('nokit');
+
+function countdown (retries) {
+   var attempt = 0;
+   return async () => {
+        var r = Math.random() * Math.pow(2, attempt) * 1000;
+        var t = Math.min(r, 1000 * 60 * 10);
+        await sleep(t);
+        return attempt++ &lt; retries;
+   };
+}
+
+retry(countdown(10), request)('http://test.com').then(
+   (body) => console.log(body),
+   (errs) => console.error(errs)
+);
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".sleep"><span class="type-signature">(static) </span>sleep<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Create a promise that will wait for a while before resolution.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line263">line 263</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var sleep = require('yaku/lib/sleep');
+sleep(1000).then(() => console.log('after one second'));
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".throw"><span class="type-signature">(static) </span>throw<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Throw an error to break the program.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_yaku_lib_utils.js.html">node_modules/yaku/lib/utils.js</a>, <a href="node_modules_yaku_lib_utils.js.html#line333">line 333</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>```js
+var ythrow = require('yaku/lib/throw');
+Promise.resolve().then(() => {
+    // This error won't be caught by promise.
+    ythrow('break the program!');
+});
+```</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="~atcharset"><span class="type-signature">(inner) </span>atcharset<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Parse charset
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line502">line 502</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~atimport"><span class="type-signature">(inner) </span>atimport<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Parse import
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line496">line 496</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~atnamespace"><span class="type-signature">(inner) </span>atnamespace<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Parse namespace
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line508">line 508</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~errorsList"><span class="type-signature">(inner) </span>errorsList<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Error `msg`.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~lineno"><span class="type-signature">(inner) </span>lineno<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Positional.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".allocBuffer"><span class="type-signature">(static) </span>allocBuffer<span class="signature">(size)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a new nodejs Buffer with the specified size.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>size</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the size of the buffer.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    a new Buffer.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Buffer</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".close"><span class="type-signature">(static) </span>close<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes the currently opened modal
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_modal.js.html">src/fake_node_modules/powercord/modal.js</a>, <a href="src_fake_node_modules_powercord_modal.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".closeAll"><span class="type-signature">(static) </span>closeAll<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes all modals
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_modal.js.html">src/fake_node_modules/powercord/modal.js</a>, <a href="src_fake_node_modules_powercord_modal.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".del"><span class="type-signature">(static) </span>del<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a DELETE request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".extglobChars"><span class="type-signature">(static) </span>extglobChars<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create EXTGLOB_CHARS
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_picomatch_lib_constants.js.html">node_modules/picomatch/lib/constants.js</a>, <a href="node_modules_picomatch_lib_constants.js.html#line162">line 162</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".get"><span class="type-signature">(static) </span>get<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a GET request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".globChars"><span class="type-signature">(static) </span>globChars<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create GLOB_CHARS
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_picomatch_lib_constants.js.html">node_modules/picomatch/lib/constants.js</a>, <a href="node_modules_picomatch_lib_constants.js.html#line176">line 176</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".head"><span class="type-signature">(static) </span>head<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a HEAD request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isBuffer"><span class="type-signature">(static) </span>isBuffer<span class="signature">(b)</span><span class="type-signature"> &rarr; {<a href="global.html#Boolean">Boolean</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Find out if an object is a Buffer.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the object to test.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true if the object is a Buffer, false otherwise.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Boolean">Boolean</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".newBufferFrom"><span class="type-signature">(static) </span>newBufferFrom<span class="signature">(data, encoding)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a new nodejs Buffer from an existing content.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the data to pass to the constructor.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the encoding to use.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_jszip_lib_nodejsUtils.js.html">node_modules/jszip/lib/nodejsUtils.js</a>, <a href="node_modules_jszip_lib_nodejsUtils.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    a new Buffer.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Buffer</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".open"><span class="type-signature">(static) </span>open<span class="signature">(Component)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens a new modal
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Component</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">React.Component</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_modal.js.html">src/fake_node_modules/powercord/modal.js</a>, <a href="src_fake_node_modules_powercord_modal.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".post"><span class="type-signature">(static) </span>post<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a POST request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".put"><span class="type-signature">(static) </span>put<span class="signature">(url)</span><span class="type-signature"> &rarr; {<a href="GenericRequest.html">GenericRequest</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a PUT request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to call</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_http_index.js.html">src/fake_node_modules/powercord/http/index.js</a>, <a href="src_fake_node_modules_powercord_http_index.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Created request
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="GenericRequest.html">GenericRequest</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeAnnouncement"><span class="type-signature"></span>closeAnnouncement<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes an announcement
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Announcement ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:announcementClosed</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeToast"><span class="type-signature"></span>closeToast<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closes a toast
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Toast ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:toastLeaving</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="from"><span class="type-signature"></span>from<span class="signature">(promise)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an AsyncComponent from a promise
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>promise</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Promise</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Promise of a React component</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_fake_node_modules_powercord_components_AsyncComponent.js.html">src/fake_node_modules/powercord/components/AsyncComponent.js</a>, <a href="src_fake_node_modules_powercord_components_AsyncComponent.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="sendAnnouncement"><span class="type-signature"></span>sendAnnouncement<span class="signature">(id, props)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sends an announcement to the user (banner at the top of the client)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Announcement ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PowercordAnnouncement">PowercordAnnouncement</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Announcement</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:announcementAdded</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="sendToast"><span class="type-signature"></span>sendToast<span class="signature">(id, props)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sends a toast to the user
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#String">String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Toast ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PowercordToast">PowercordToast</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Toast</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_Powercord_apis_notices.js.html">src/Powercord/apis/notices.js</a>, <a href="src_Powercord_apis_notices.js.html#line79">line 79</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li>NoticesAPI#event:toastAdded</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~_compileAtrule"><span class="type-signature">(inner) </span>_compileAtrule<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse non-block at-rules
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line515">line 515</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atcustommedia"><span class="type-signature">(inner) </span>atcustommedia<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse custom-media.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line397">line 397</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atdocument"><span class="type-signature">(inner) </span>atdocument<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse document.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line443">line 443</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atfontface"><span class="type-signature">(inner) </span>atfontface<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse font-face.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line469">line 469</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~athost"><span class="type-signature">(inner) </span>athost<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse host.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line350">line 350</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atkeyframes"><span class="type-signature">(inner) </span>atkeyframes<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse keyframes.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line291">line 291</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atmedia"><span class="type-signature">(inner) </span>atmedia<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse media.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line372">line 372</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atpage"><span class="type-signature">(inner) </span>atpage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse paged media.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line413">line 413</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atrule"><span class="type-signature">(inner) </span>atrule<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse at rule.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line531">line 531</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~atsupports"><span class="type-signature">(inner) </span>atsupports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse supports.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line326">line 326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~close"><span class="type-signature">(inner) </span>close<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Closing brace.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line105">line 105</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~comment"><span class="type-signature">(inner) </span>comment<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse comment.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line167">line 167</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~comments"><span class="type-signature">(inner) </span>comments<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse comments;
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~declaration"><span class="type-signature">(inner) </span>declaration<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse declaration.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line215">line 215</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~declarations"><span class="type-signature">(inner) </span>declarations<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse declarations.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line245">line 245</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~fn"><span class="type-signature">(inner) </span>fn<span class="signature">(url, enc)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The path to the image you want to encode.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>enc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The encoding for the image. Defaults to base64, the 
+other valid option is `utf8`.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_lib_functions_url.js.html">node_modules/stylus/lib/functions/url.js</a>, <a href="node_modules_stylus_lib_functions_url.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~keyframe"><span class="type-signature">(inner) </span>keyframe<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse keyframe.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line268">line 268</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~match"><span class="type-signature">(inner) </span>match<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Match `re` and return captures.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line131">line 131</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~open"><span class="type-signature">(inner) </span>open<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opening brace.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line97">line 97</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~position"><span class="type-signature">(inner) </span>position<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Mark position and patch `node.position`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~Position"><span class="type-signature">(inner) </span>Position<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Store position information for a node
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~rule"><span class="type-signature">(inner) </span>rule<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse rule.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line551">line 551</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~rules"><span class="type-signature">(inner) </span>rules<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse ruleset.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~selector"><span class="type-signature">(inner) </span>selector<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse selector.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line195">line 195</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~stylesheet"><span class="type-signature">(inner) </span>stylesheet<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse stylesheet.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~toCSS"><span class="type-signature">(inner) </span>toCSS<span class="signature">(options, filePath, callback)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Object">Object</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filePath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_less_test_less-test.js.html">node_modules/less/test/less-test.js</a>, <a href="node_modules_less_test_less-test.js.html#line478">line 478</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~updatePosition"><span class="type-signature">(inner) </span>updatePosition<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Update lineno and column based on `str`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~whitespace"><span class="type-signature">(inner) </span>whitespace<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parse whitespace.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_css_lib_parse_index.js.html">node_modules/css/lib/parse/index.js</a>, <a href="node_modules_css_lib_parse_index.js.html#line144">line 144</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-ColorConverter.html">ColorConverter</a></li><li><a href="module-ContextMenu.html">ContextMenu</a></li><li><a href="module-DiscordAPI.html">DiscordAPI</a></li><li><a href="module-DiscordClasses.html">DiscordClasses</a></li><li><a href="module-DiscordClassModules.html">DiscordClassModules</a></li><li><a href="module-DiscordContextMenu.html">DiscordContextMenu</a></li><li><a href="module-DiscordModules.html">DiscordModules</a></li><li><a href="module-DiscordSelectors.html">DiscordSelectors</a></li><li><a href="module-DOMTools.html">DOMTools</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-Modals.html">Modals</a></li><li><a href="module-Patcher.html">Patcher</a></li><li><a href="module-PluginUpdater.html">PluginUpdater</a></li><li><a href="module-PluginUtilities.html">PluginUtilities</a></li><li><a href="module-Popouts.html">Popouts</a></li><li><a href="module-powercord_injector.html">powercord/injector</a></li><li><a href="module-ReactComponents.html">ReactComponents</a></li><li><a href="module-ReactTools.html">ReactTools</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-Toasts.html">Toasts</a></li><li><a href="module-Tooltip.html">Tooltip</a></li><li><a href="module-Utilities.html">Utilities</a></li><li><a href="module-WebpackModules.html">WebpackModules</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#ArraySet">ArraySet</a></li><li><a href="global.html#BasicSourceMapConsumer">BasicSourceMapConsumer</a></li><li><a href="CJSImportProcessor.html">CJSImportProcessor</a></li><li><a href="CJSImportTransformer.html">CJSImportTransformer</a></li><li><a href="CommanderError.html">CommanderError</a></li><li><a href="CommandsAPI.html">CommandsAPI</a></li><li><a href="global.html#Compiler">Compiler</a></li><li><a href="CompressedObject.html">CompressedObject</a></li><li><a href="ConvertWorker.html">ConvertWorker</a></li><li><a href="Crc32Probe.html">Crc32Probe</a></li><li><a href="CSS.html">CSS</a></li><li><a href="DataLengthProbe.html">DataLengthProbe</a></li><li><a href="DataWorker.html">DataWorker</a></li><li><a href="DirEntry.html">DirEntry</a></li><li><a href="ESMImportTransformer.html">ESMImportTransformer</a></li><li><a href="FlateWorker.html">FlateWorker</a></li><li><a href="FSWatcher.html">FSWatcher</a></li><li><a href="GenericWorker.html">GenericWorker</a></li><li><a href="global.html#IndexedSourceMapConsumer">IndexedSourceMapConsumer</a></li><li><a href="JSX.html">JSX</a></li><li><a href="JSZip.html">JSZip</a></li><li><a href="KeybindsAPI.html">KeybindsAPI</a></li><li><a href="LabsAPI.html">LabsAPI</a></li><li><a href="Less.html">Less</a></li><li><a href="LessError.html">LessError</a></li><li><a href="global.html#MappingList">MappingList</a></li><li><a href="module.html#.exports">exports</a></li><li><a href="module-ContextMenu-ImageItem.html">ImageItem</a></li><li><a href="module-ContextMenu-ItemGroup.html">ItemGroup</a></li><li><a href="module-ContextMenu-Menu.html">Menu</a></li><li><a href="module-ContextMenu-MenuItem.html">MenuItem</a></li><li><a href="module-ContextMenu-SubMenuItem.html">SubMenuItem</a></li><li><a href="module-ContextMenu-TextItem.html">TextItem</a></li><li><a href="module-ContextMenu-ToggleItem.html">ToggleItem</a></li><li><a href="module-DiscordAPI.Channel.html">Channel</a></li><li><a href="module-DiscordAPI.Guild.html">Guild</a></li><li><a href="module-DiscordAPI.InsufficientPermissions.html">InsufficientPermissions</a></li><li><a href="module-DiscordAPI.Message.html">Message</a></li><li><a href="module-DiscordAPI.User.html">User</a></li><li><a href="module-DiscordAPI.UserSettings.html">UserSettings</a></li><li><a href="module-DOMTools.ClassName.html">ClassName</a></li><li><a href="module-DOMTools.DOMObserver.html">DOMObserver</a></li><li><a href="module-DOMTools.Selector.html">Selector</a></li><li><a href="module-PluginUtilities-Helpers.html">Helpers</a></li><li><a href="module-ReactTools-Reflection.html">Reflection</a></li><li><a href="module-Settings.ColorPicker.html">ColorPicker</a></li><li><a href="module-Settings.Dropdown.html">Dropdown</a></li><li><a href="module-Settings.FilePicker.html">FilePicker</a></li><li><a href="module-Settings.Keybind.html">Keybind</a></li><li><a href="module-Settings.RadioGroup.html">RadioGroup</a></li><li><a href="module-Settings.SettingField.html">SettingField</a></li><li><a href="module-Settings.SettingGroup.html">SettingGroup</a></li><li><a href="module-Settings.SettingPanel.html">SettingPanel</a></li><li><a href="module-Settings.Slider.html">Slider</a></li><li><a href="module-Settings.Switch.html">Switch</a></li><li><a href="module-Settings.Textbox.html">Textbox</a></li><li><a href="module-Tooltip-Tooltip.html">Tooltip</a></li><li><a href="module-WebpackModules-Filters.html">Filters</a></li><li><a href="module-WebpackModules-List.html">List</a></li><li><a href="module-WebpackModules-Listenable.html">Listenable</a></li><li><a href="module-WebpackModules-Screen.html">Screen</a></li><li><a href="NodejsStreamInputAdapter.html">NodejsStreamInputAdapter</a></li><li><a href="NodejsStreamOutputAdapter.html">NodejsStreamOutputAdapter</a></li><li><a href="OptionalChainingNullishTransformer.html">OptionalChainingNullishTransformer</a></li><li><a href="Plugin.html">Plugin</a></li><li><a href="Powercord.html">Powercord</a></li><li><a href="ReactDisplayNameTransformer.html">ReactDisplayNameTransformer</a></li><li><a href="RouterAPI.html">RouterAPI</a></li><li><a href="RpcAPI.html">RpcAPI</a></li><li><a href="SCSS.html">SCSS</a></li><li><a href="Section.html">Section</a></li><li><a href="SettingsAPI.html">SettingsAPI</a></li><li><a href="global.html#SourceMapGenerator">SourceMapGenerator</a></li><li><a href="global.html#SourceNode">SourceNode</a></li><li><a href="StreamHelper.html">StreamHelper</a></li><li><a href="Stylus.html">Stylus</a></li><li><a href="Updatable.html">Updatable</a></li><li><a href="Utf8DecodeWorker.html">Utf8DecodeWorker</a></li><li><a href="Utf8EncodeWorker.html">Utf8EncodeWorker</a></li><li><a href="ZipEntries.html">ZipEntries</a></li><li><a href="ZipEntry.html">ZipEntry</a></li><li><a href="ZipObject.html">ZipObject</a></li></ul><h3>Interfaces</h3><ul><li><a href="module-DiscordContextMenu-MenuControlItem.html">MenuControlItem</a></li><li><a href="module-DiscordContextMenu-MenuItem.html">MenuItem</a></li><li><a href="module-DiscordContextMenu-MenuRadioItem.html">MenuRadioItem</a></li><li><a href="module-DiscordContextMenu-MenuToggleItem.html">MenuToggleItem</a></li><li><a href="module-DiscordContextMenu-SubMenuItem.html">SubMenuItem</a></li><li><a href="module-DOMTools-Offset.html">Offset</a></li><li><a href="module-FilePicker.html">FilePicker</a></li><li><a href="module-Modals-Changelog.html">Changelog</a></li><li><a href="module-Settings-DropdownItem.html">DropdownItem</a></li><li><a href="module-Settings-RadioItem.html">RadioItem</a></li></ul><h3>Mixins</h3><ul><li><a href="FsEventsHandler.html">FsEventsHandler</a></li><li><a href="NodeFsHandler.html">NodeFsHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html"></a></li><li><a href="global.html#__extends">__extends</a></li><li><a href="global.html#__importDefault">__importDefault</a></li><li><a href="global.html#_init">_init</a></li><li><a href="global.html#_tsinterfacechecker">_tsinterfacechecker</a></li><li><a href="global.html#_utf8len">_utf8len</a></li><li><a href="global.html#absolute">absolute</a></li><li><a href="global.html#accumulate">accumulate</a></li><li><a href="global.html#addFile">addFile</a></li><li><a href="global.html#addHook">addHook</a></li><li><a href="global.html#addParent">addParent</a></li><li><a href="global.html#adjust">adjust</a></li><li><a href="global.html#alias">alias</a></li><li><a href="global.html#alpha">alpha</a></li><li><a href="global.html#AnsiEscapes">AnsiEscapes</a></li><li><a href="global.html#anymatch">anymatch</a></li><li><a href="global.html#applySourceMaps">applySourceMaps</a></li><li><a href="global.html#Arguments">Arguments</a></li><li><a href="global.html#array">array</a></li><li><a href="global.html#arrayLikeToArrayLike">arrayLikeToArrayLike</a></li><li><a href="global.html#arrayLikeToString">arrayLikeToString</a></li><li><a href="global.html#arrayToStringHelper">arrayToStringHelper</a></li><li><a href="global.html#assertColor">assertColor</a></li><li><a href="global.html#assertPresent">assertPresent</a></li><li><a href="global.html#assertString">assertString</a></li><li><a href="global.html#assertType">assertType</a></li><li><a href="global.html#Atblock">Atblock</a></li><li><a href="global.html#Atrule">Atrule</a></li><li><a href="global.html#Base">Base</a></li><li><a href="global.html#basename">basename</a></li><li><a href="global.html#baseParseSubscript">baseParseSubscript</a></li><li><a href="global.html#BasicType">BasicType</a></li><li><a href="global.html#basicTypes">basicTypes</a></li><li><a href="global.html#BinOp">BinOp</a></li><li><a href="global.html#blend">blend</a></li><li><a href="global.html#Block">Block</a></li><li><a href="global.html#blue">blue</a></li><li><a href="global.html#Boolean">Boolean</a></li><li><a href="global.html#braces">braces</a></li><li><a href="global.html#Call">Call</a></li><li><a href="global.html#camelcase">camelcase</a></li><li><a href="global.html#catch">catch</a></li><li><a href="global.html#charset">charset</a></li><li><a href="global.html#Charset">Charset</a></li><li><a href="global.html#checkEntryCRC32">checkEntryCRC32</a></li><li><a href="global.html#Checker">Checker</a></li><li><a href="global.html#checkImports">checkImports</a></li><li><a href="global.html#checkSupport">checkSupport</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#clampAlpha">clampAlpha</a></li><li><a href="global.html#clampDegrees">clampDegrees</a></li><li><a href="global.html#clampPercentage">clampPercentage</a></li><li><a href="global.html#coerce">coerce</a></li><li><a href="global.html#coerceArray">coerceArray</a></li><li><a href="global.html#coerceObject">coerceObject</a></li><li><a href="global.html#CoercionError">CoercionError</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#Command">Command</a></li><li><a href="global.html#comment">comment</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compareByGeneratedPositionsDeflated">compareByGeneratedPositionsDeflated</a></li><li><a href="global.html#compareByGeneratedPositionsInflated">compareByGeneratedPositionsInflated</a></li><li><a href="global.html#compareByOriginalPositions">compareByOriginalPositions</a></li><li><a href="global.html#compile">compile</a></li><li><a href="global.html#compileSelectors">compileSelectors</a></li><li><a href="global.html#component">component</a></li><li><a href="global.html#componentMap">componentMap</a></li><li><a href="global.html#Compressed">Compressed</a></li><li><a href="global.html#computeSourceMap">computeSourceMap</a></li><li><a href="global.html#computeSourceURL">computeSourceURL</a></li><li><a href="global.html#concat">concat</a></li><li><a href="global.html#config">config</a></li><li><a href="global.html#contentType">contentType</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#convert">convert</a></li><li><a href="global.html#convertCSS">convertCSS</a></li><li><a href="global.html#Converter">Converter</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#coremods">coremods</a></li><li><a href="global.html#crc32str">crc32str</a></li><li><a href="global.html#createCheckers">createCheckers</a></li><li><a href="global.html#createDebug">createDebug</a></li><li><a href="global.html#createFSEventsInstance">createFSEventsInstance</a></li><li><a href="global.html#createFsWatchInstance">createFsWatchInstance</a></li><li><a href="global.html#createPattern">createPattern</a></li><li><a href="global.html#crypto">crypto</a></li><li><a href="global.html#decode">decode</a></li><li><a href="global.html#defaultMimes">defaultMimes</a></li><li><a href="global.html#define">define</a></li><li><a href="global.html#deflate">deflate</a></li><li><a href="global.html#Deflate">Deflate</a></li><li><a href="global.html#deflateRaw">deflateRaw</a></li><li><a href="global.html#delay">delay</a></li><li><a href="global.html#deprecate">deprecate</a></li><li><a href="global.html#DepsResolver">DepsResolver</a></li><li><a href="global.html#DetailContext">DetailContext</a></li><li><a href="global.html#dirname">dirname</a></li><li><a href="global.html#disable">disable</a></li><li><a href="global.html#disableAll">disableAll</a></li><li><a href="global.html#doQuickSort">doQuickSort</a></li><li><a href="global.html#DOT_LITERAL">DOT_LITERAL</a></li><li><a href="global.html#Each">Each</a></li><li><a href="global.html#emit">emit</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#enableAll">enableAll</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#encloseBrace">encloseBrace</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#encodingTypes">encodingTypes</a></li><li><a href="global.html#enumlit">enumlit</a></li><li><a href="global.html#enumtype">enumtype</a></li><li><a href="global.html#error">error</a></li><li><a href="global.html#escapeNode">escapeNode</a></li><li><a href="global.html#Evaluator">Evaluator</a></li><li><a href="global.html#EventEmitter">EventEmitter</a></li><li><a href="global.html#events">events</a></li><li><a href="global.html#exceedsLimit">exceedsLimit</a></li><li><a href="global.html#expandRange">expandRange</a></li><li><a href="global.html#Expression">Expression</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#extension">extension</a></li><li><a href="global.html#extname">extname</a></li><li><a href="global.html#FACTOR_TABLE">FACTOR_TABLE</a></li><li><a href="global.html#Feature">Feature</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#findCompression">findCompression</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#fmtLong">fmtLong</a></li><li><a href="global.html#fmtShort">fmtShort</a></li><li><a href="global.html#formatArgs">formatArgs</a></li><li><a href="global.html#formatException">formatException</a></li><li><a href="global.html#formatJSXStringValueLiteral">formatJSXStringValueLiteral</a></li><li><a href="global.html#formatJSXTextLiteral">formatJSXTextLiteral</a></li><li><a href="global.html#formatJSXTextReplacement">formatJSXTextReplacement</a></li><li><a href="global.html#formatters">formatters</a></li><li><a href="global.html#Frame">Frame</a></li><li><a href="global.html#fromHSLA">fromHSLA</a></li><li><a href="global.html#fromRGBA">fromRGBA</a></li><li><a href="global.html#fromVLQSigned">fromVLQSigned</a></li><li><a href="global.html#fs">fs</a></li><li><a href="global.html#FSEventsWatchers">FSEventsWatchers</a></li><li><a href="global.html#fsWatchBroadcast">fsWatchBroadcast</a></li><li><a href="global.html#FsWatchInstances">FsWatchInstances</a></li><li><a href="global.html#func">func</a></li><li><a href="global.html#Function">Function</a></li><li><a href="global.html#functions">functions</a></li><li><a href="global.html#generateCentralDirectoryEnd">generateCentralDirectoryEnd</a></li><li><a href="global.html#generateDataDescriptors">generateDataDescriptors</a></li><li><a href="global.html#generateDosExternalFileAttr">generateDosExternalFileAttr</a></li><li><a href="global.html#generatedPositionAfter">generatedPositionAfter</a></li><li><a href="global.html#generateUnixExternalFileAttr">generateUnixExternalFileAttr</a></li><li><a href="global.html#generateWorker">generateWorker</a></li><li><a href="global.html#generateZipParts">generateZipParts</a></li><li><a href="global.html#genIterator">genIterator</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getAppDir">getAppDir</a></li><li><a href="global.html#getArg">getArg</a></li><li><a href="global.html#getCache">getCache</a></li><li><a href="global.html#getClassInfo">getClassInfo</a></li><li><a href="global.html#getCompression">getCompression</a></li><li><a href="global.html#getDeclarationInfo">getDeclarationInfo</a></li><li><a href="global.html#getFormattedTokens">getFormattedTokens</a></li><li><a href="global.html#getIdentifierNames">getIdentifierNames</a></li><li><a href="global.html#getSucraseContext">getSucraseContext</a></li><li><a href="global.html#getTSImportedNames">getTSImportedNames</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#getTypeOf">getTypeOf</a></li><li><a href="global.html#green">green</a></li><li><a href="global.html#Group">Group</a></li><li><a href="global.html#gzip">gzip</a></li><li><a href="global.html#hasOwnProperty">hasOwnProperty</a></li><li><a href="global.html#hasShadowedGlobals">hasShadowedGlobals</a></li><li><a href="global.html#hsl">hsl</a></li><li><a href="global.html#hsla">hsla</a></li><li><a href="global.html#HSLA">HSLA</a></li><li><a href="global.html#hue">hue</a></li><li><a href="global.html#humanReadableArgName">humanReadableArgName</a></li><li><a href="global.html#Ident">Ident</a></li><li><a href="global.html#identifyShadowedGlobals">identifyShadowedGlobals</a></li><li><a href="global.html#identity">identity</a></li><li><a href="global.html#If">If</a></li><li><a href="global.html#iface">iface</a></li><li><a href="global.html#Image">Image</a></li><li><a href="global.html#imageSize">imageSize</a></li><li><a href="global.html#Import">Import</a></li><li><a href="global.html#importFile">importFile</a></li><li><a href="global.html#imports">imports</a></li><li><a href="global.html#incrementNodeInspectorPort">incrementNodeInspectorPort</a></li><li><a href="global.html#Inflate">Inflate</a></li><li><a href="global.html#inflate">inflate</a></li><li><a href="global.html#inflateRaw">inflateRaw</a></li><li><a href="global.html#inherits">inherits</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#inspect">inspect</a></li><li><a href="global.html#inspectOpts">inspectOpts</a></li><li><a href="global.html#instances">instances</a></li><li><a href="global.html#intersection">intersection</a></li><li><a href="global.html#isAccessModifier">isAccessModifier</a></li><li><a href="global.html#isAnyObject">isAnyObject</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isAsyncOperation">isAsyncOperation</a></li><li><a href="global.html#isBlob">isBlob</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isDate">isDate</a></li><li><a href="global.html#isEmptyArray">isEmptyArray</a></li><li><a href="global.html#isEmptyObject">isEmptyObject</a></li><li><a href="global.html#isEmptyString">isEmptyString</a></li><li><a href="global.html#isError">isError</a></li><li><a href="global.html#isFile">isFile</a></li><li><a href="global.html#isFullArray">isFullArray</a></li><li><a href="global.html#isFullObject">isFullObject</a></li><li><a href="global.html#isFullString">isFullString</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isInvalidBrace">isInvalidBrace</a></li><li><a href="global.html#isMap">isMap</a></li><li><a href="global.html#isNaNValue">isNaNValue</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#isNullOrUndefined">isNullOrUndefined</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isObjectLike">isObjectLike</a></li><li><a href="global.html#isOpenOrClose">isOpenOrClose</a></li><li><a href="global.html#isPlainObject">isPlainObject</a></li><li><a href="global.html#isPrimitive">isPrimitive</a></li><li><a href="global.html#isPromise">isPromise</a></li><li><a href="global.html#isRegExp">isRegExp</a></li><li><a href="global.html#isRegistered">isRegistered</a></li><li><a href="global.html#isSet">isSet</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#isSymbol">isSymbol</a></li><li><a href="global.html#isType">isType</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#isWeakMap">isWeakMap</a></li><li><a href="global.html#isWeakSet">isWeakSet</a></li><li><a href="global.html#join">join</a></li><li><a href="global.html#json">json</a></li><li><a href="global.html#jsonCharacterEncoding">jsonCharacterEncoding</a></li><li><a href="global.html#jsonMimeTypeRegex">jsonMimeTypeRegex</a></li><li><a href="global.html#Keyframes">Keyframes</a></li><li><a href="global.html#lessFolder">lessFolder</a></li><li><a href="global.html#Lexer">Lexer</a></li><li><a href="global.html#lightness">lightness</a></li><li><a href="global.html#lit">lit</a></li><li><a href="global.html#Literal">Literal</a></li><li><a href="global.html#literal">literal</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#loadImplementation">loadImplementation</a></li><li><a href="global.html#localstorage">localstorage</a></li><li><a href="global.html#log">log</a></li><li><a href="global.html#lookup">lookup</a></li><li><a href="global.html#lookupIndex">lookupIndex</a></li><li><a href="global.html#lruMemoize">lruMemoize</a></li><li><a href="global.html#luminosity">luminosity</a></li><li><a href="global.html#makeTable">makeTable</a></li><li><a href="global.html#Mapping">Mapping</a></li><li><a href="global.html#match">match</a></li><li><a href="global.html#matchPatterns">matchPatterns</a></li><li><a href="global.html#math">math</a></li><li><a href="global.html#Media">Media</a></li><li><a href="global.html#Member">Member</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#middleware">middleware</a></li><li><a href="global.html#mime">mime</a></li><li><a href="global.html#mixin">mixin</a></li><li><a href="global.html#Module">Module</a></li><li><a href="global.html#modules">modules</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#names">names</a></li><li><a href="global.html#Namespace">Namespace</a></li><li><a href="global.html#newBlob">newBlob</a></li><li><a href="global.html#next">next</a></li><li><a href="global.html#Node">Node</a></li><li><a href="global.html#nodes">nodes</a></li><li><a href="global.html#NoopContext">NoopContext</a></li><li><a href="global.html#normalize">normalize</a></li><li><a href="global.html#Normalizer">Normalizer</a></li><li><a href="global.html#Null">Null</a></li><li><a href="global.html#NullCache">NullCache</a></li><li><a href="global.html#Object">Object</a></li><li><a href="global.html#Observable">Observable</a></li><li><a href="global.html#oldJson">oldJson</a></li><li><a href="global.html#operate">operate</a></li><li><a href="global.html#opt">opt</a></li><li><a href="global.html#Option">Option</a></li><li><a href="global.html#optionalWrap">optionalWrap</a></li><li><a href="global.html#outputHelpIfRequested">outputHelpIfRequested</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#param">param</a></li><li><a href="global.html#Params">Params</a></li><li><a href="global.html#params">params</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#ParseError">ParseError</a></li><li><a href="global.html#parseIdentifierStatement">parseIdentifierStatement</a></li><li><a href="global.html#parseMaybeAssign">parseMaybeAssign</a></li><li><a href="global.html#parseObject">parseObject</a></li><li><a href="global.html#Parser">Parser</a></li><li><a href="global.html#parseSourceMapInput">parseSourceMapInput</a></li><li><a href="global.html#parseSpec">parseSpec</a></li><li><a href="global.html#parseString">parseString</a></li><li><a href="global.html#picomatch">picomatch</a></li><li><a href="global.html#PluginLoader">PluginLoader</a></li><li><a href="global.html#PluginManager">PluginManager</a></li><li><a href="global.html#plural">plural</a></li><li><a href="global.html#POSIX_REGEX_SOURCE">POSIX_REGEX_SOURCE</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#prefixClasses">prefixClasses</a></li><li><a href="global.html#prepareContent">prepareContent</a></li><li><a href="global.html#pretty">pretty</a></li><li><a href="global.html#processConstructor">processConstructor</a></li><li><a href="global.html#processEntity">processEntity</a></li><li><a href="global.html#Property">Property</a></li><li><a href="global.html#pseudoSelectors">pseudoSelectors</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#Query">Query</a></li><li><a href="global.html#QueryList">QueryList</a></li><li><a href="global.html#querystring">querystring</a></li><li><a href="global.html#quickSort">quickSort</a></li><li><a href="global.html#randomIntInRange">randomIntInRange</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeToPattern">rangeToPattern</a></li><li><a href="global.html#raw">raw</a></li><li><a href="global.html#readdirp">readdirp</a></li><li><a href="global.html#readWord">readWord</a></li><li><a href="global.html#recursiveSearch">recursiveSearch</a></li><li><a href="global.html#red">red</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#relative">relative</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#Renderer">Renderer</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#Return">Return</a></li><li><a href="global.html#rgb">rgb</a></li><li><a href="global.html#RGBA">RGBA</a></li><li><a href="global.html#rgba">rgba</a></li><li><a href="global.html#rmdirRf">rmdirRf</a></li><li><a href="global.html#Root">Root</a></li><li><a href="global.html#runSerial">runSerial</a></li><li><a href="global.html#s">s</a></li><li><a href="global.html#saturation">saturation</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#scan">scan</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#search">search</a></li><li><a href="global.html#selectColor">selectColor</a></li><li><a href="global.html#Selector">Selector</a></li><li><a href="global.html#selectorExists">selectorExists</a></li><li><a href="global.html#SelectorParser">SelectorParser</a></li><li><a href="global.html#selectorTokens">selectorTokens</a></li><li><a href="global.html#setFSEventsListener">setFSEventsListener</a></li><li><a href="global.html#setFsWatchFileListener">setFsWatchFileListener</a></li><li><a href="global.html#setFsWatchListener">setFsWatchListener</a></li><li><a href="global.html#shouldElideDefaultExport">shouldElideDefaultExport</a></li><li><a href="global.html#shouldPreferGlobalPromise">shouldPreferGlobalPromise</a></li><li><a href="global.html#skipFieldName">skipFieldName</a></li><li><a href="global.html#skipToNextClassElement">skipToNextClassElement</a></li><li><a href="global.html#SourceMap">SourceMap</a></li><li><a href="global.html#SourceMapper">SourceMapper</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#Stack">Stack</a></li><li><a href="global.html#startsWithLowerCase">startsWithLowerCase</a></li><li><a href="global.html#String">String</a></li><li><a href="global.html#string2binary">string2binary</a></li><li><a href="global.html#stringToArrayLike">stringToArrayLike</a></li><li><a href="global.html#stylus">stylus</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html#subscribers">subscribers</a></li><li><a href="global.html#substr">substr</a></li><li><a href="global.html#Supports">Supports</a></li><li><a href="global.html#swap">swap</a></li><li><a href="global.html#SyntaxError">SyntaxError</a></li><li><a href="global.html#syntaxError">syntaxError</a></li><li><a href="global.html#tan">tan</a></li><li><a href="global.html#Ternary">Ternary</a></li><li><a href="global.html#tests">tests</a></li><li><a href="global.html#then">then</a></li><li><a href="global.html#thenify">thenify</a></li><li><a href="global.html#thenifyAll">thenifyAll</a></li><li><a href="global.html#Token">Token</a></li><li><a href="global.html#TokenType">TokenType</a></li><li><a href="global.html#toSetString">toSetString</a></li><li><a href="global.html#toVLQSigned">toVLQSigned</a></li><li><a href="global.html#TParamList">TParamList</a></li><li><a href="global.html#TProp">TProp</a></li><li><a href="global.html#transformTo">transformTo</a></li><li><a href="global.html#transformZipOutput">transformZipOutput</a></li><li><a href="global.html#transparentify">transparentify</a></li><li><a href="global.html#trim">trim</a></li><li><a href="global.html#true">true</a></li><li><a href="global.html#tryAutoDetect">tryAutoDetect</a></li><li><a href="global.html#tsParseModifier">tsParseModifier</a></li><li><a href="global.html#tsParseTypePredicateOrAssertsPrefix">tsParseTypePredicateOrAssertsPrefix</a></li><li><a href="global.html#tty">tty</a></li><li><a href="global.html#TType">TType</a></li><li><a href="global.html#tuple">tuple</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#typedParseConditional">typedParseConditional</a></li><li><a href="global.html#typeMap">typeMap</a></li><li><a href="global.html#types_2">types_2</a></li><li><a href="global.html#UnaryOp">UnaryOp</a></li><li><a href="global.html#unexpected">unexpected</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#unit">unit</a></li><li><a href="global.html#Unit">Unit</a></li><li><a href="global.html#unitMap">unitMap</a></li><li><a href="global.html#unquote">unquote</a></li><li><a href="global.html#unregister">unregister</a></li><li><a href="global.html#unregisterAll">unregisterAll</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#unwrap">unwrap</a></li><li><a href="global.html#updatePosition">updatePosition</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#use">use</a></li><li><a href="global.html#useColors">useColors</a></li><li><a href="global.html#utf8decode">utf8decode</a></li><li><a href="global.html#utf8encode">utf8encode</a></li><li><a href="global.html#utils">utils</a></li><li><a href="global.html#VError">VError</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#visit">visit</a></li><li><a href="global.html#Visitor">Visitor</a></li><li><a href="global.html#warn">warn</a></li><li><a href="global.html#watch">watch</a></li><li><a href="global.html#webpack">webpack</a></li><li><a href="global.html#WINDOWS_CHARS">WINDOWS_CHARS</a></li><li><a href="global.html#withCallback">withCallback</a></li><li><a href="global.html#wrap">wrap</a></li><li><a href="global.html#ZeresPluginLibrary">ZeresPluginLibrary</a></li><li><a href="global.html#zip">zip</a></li><li><a href="global.html#ZipFileWorker">ZipFileWorker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Mar 08 2021 15:13:56 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

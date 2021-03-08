@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: MappingList</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: MappingList</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>MappingList<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">A data structure to provide a sorted view of accumulated mappings in a
+performance conscious manner. It trades a negligible overhead in general
+case for a large speedup in case of mappings being added in order.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="MappingList"><span class="type-signature"></span>new MappingList<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html">node_modules/stylus/node_modules/source-map/dist/source-map.js</a>, <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html#line1387">line 1387</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(Object)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add the given source mapping.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Object</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">aMapping</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html">node_modules/stylus/node_modules/source-map/dist/source-map.js</a>, <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html#line1410">line 1410</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(Object)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add the given source mapping.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Object</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">aMapping</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_source-map_lib_mapping-list.js.html">node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_source-map_lib_mapping-list.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(Object)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add the given source mapping.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Object</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">aMapping</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html">node_modules/stylus/node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toArray"><span class="type-signature"></span>toArray<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the flat, sorted array of mappings. The mappings are sorted by
+generated position.
+
+WARNING: This method returns internal data without copying, for
+performance. The return value must NOT be mutated, and should be treated as
+an immutable borrow. If you want to take ownership, you must make your own
+copy.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html">node_modules/stylus/node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toArray"><span class="type-signature"></span>toArray<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the flat, sorted array of mappings. The mappings are sorted by
+generated position.
+
+WARNING: This method returns internal data without copying, for
+performance. The return value must NOT be mutated, and should be treated as
+an immutable borrow. If you want to take ownership, you must make your own
+copy.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_source-map_lib_mapping-list.js.html">node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_source-map_lib_mapping-list.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toArray"><span class="type-signature"></span>toArray<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the flat, sorted array of mappings. The mappings are sorted by
+generated position.
+
+WARNING: This method returns internal data without copying, for
+performance. The return value must NOT be mutated, and should be treated as
+an immutable borrow. If you want to take ownership, you must make your own
+copy.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html">node_modules/stylus/node_modules/source-map/dist/source-map.js</a>, <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html#line1429">line 1429</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="unsortedForEach"><span class="type-signature"></span>unsortedForEach<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Iterate through internal items. This method takes the same arguments that
+`Array.prototype.forEach` takes.
+
+NOTE: The order of the mappings is NOT guaranteed.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_source-map_lib_mapping-list.js.html">node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_source-map_lib_mapping-list.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="unsortedForEach"><span class="type-signature"></span>unsortedForEach<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Iterate through internal items. This method takes the same arguments that
+`Array.prototype.forEach` takes.
+
+NOTE: The order of the mappings is NOT guaranteed.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html">node_modules/stylus/node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="unsortedForEach"><span class="type-signature"></span>unsortedForEach<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Iterate through internal items. This method takes the same arguments that
+`Array.prototype.forEach` takes.
+
+NOTE: The order of the mappings is NOT guaranteed.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html">node_modules/stylus/node_modules/source-map/dist/source-map.js</a>, <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html#line1401">line 1401</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>MappingList<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">A data structure to provide a sorted view of accumulated mappings in a
+performance conscious manner. It trades a negligible overhead in general
+case for a large speedup in case of mappings being added in order.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="MappingList"><span class="type-signature"></span>new MappingList<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html">node_modules/stylus/node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(Object)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add the given source mapping.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Object</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">aMapping</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html">node_modules/stylus/node_modules/source-map/dist/source-map.js</a>, <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html#line1410">line 1410</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(Object)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add the given source mapping.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Object</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">aMapping</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_source-map_lib_mapping-list.js.html">node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_source-map_lib_mapping-list.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(Object)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add the given source mapping.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Object</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">aMapping</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html">node_modules/stylus/node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toArray"><span class="type-signature"></span>toArray<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the flat, sorted array of mappings. The mappings are sorted by
+generated position.
+
+WARNING: This method returns internal data without copying, for
+performance. The return value must NOT be mutated, and should be treated as
+an immutable borrow. If you want to take ownership, you must make your own
+copy.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html">node_modules/stylus/node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toArray"><span class="type-signature"></span>toArray<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the flat, sorted array of mappings. The mappings are sorted by
+generated position.
+
+WARNING: This method returns internal data without copying, for
+performance. The return value must NOT be mutated, and should be treated as
+an immutable borrow. If you want to take ownership, you must make your own
+copy.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_source-map_lib_mapping-list.js.html">node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_source-map_lib_mapping-list.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toArray"><span class="type-signature"></span>toArray<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the flat, sorted array of mappings. The mappings are sorted by
+generated position.
+
+WARNING: This method returns internal data without copying, for
+performance. The return value must NOT be mutated, and should be treated as
+an immutable borrow. If you want to take ownership, you must make your own
+copy.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html">node_modules/stylus/node_modules/source-map/dist/source-map.js</a>, <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html#line1429">line 1429</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="unsortedForEach"><span class="type-signature"></span>unsortedForEach<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Iterate through internal items. This method takes the same arguments that
+`Array.prototype.forEach` takes.
+
+NOTE: The order of the mappings is NOT guaranteed.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_source-map_lib_mapping-list.js.html">node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_source-map_lib_mapping-list.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="unsortedForEach"><span class="type-signature"></span>unsortedForEach<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Iterate through internal items. This method takes the same arguments that
+`Array.prototype.forEach` takes.
+
+NOTE: The order of the mappings is NOT guaranteed.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html">node_modules/stylus/node_modules/source-map/lib/mapping-list.js</a>, <a href="node_modules_stylus_node_modules_source-map_lib_mapping-list.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="unsortedForEach"><span class="type-signature"></span>unsortedForEach<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Iterate through internal items. This method takes the same arguments that
+`Array.prototype.forEach` takes.
+
+NOTE: The order of the mappings is NOT guaranteed.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html">node_modules/stylus/node_modules/source-map/dist/source-map.js</a>, <a href="node_modules_stylus_node_modules_source-map_dist_source-map.js.html#line1401">line 1401</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-ColorConverter.html">ColorConverter</a></li><li><a href="module-ContextMenu.html">ContextMenu</a></li><li><a href="module-DiscordAPI.html">DiscordAPI</a></li><li><a href="module-DiscordClasses.html">DiscordClasses</a></li><li><a href="module-DiscordClassModules.html">DiscordClassModules</a></li><li><a href="module-DiscordContextMenu.html">DiscordContextMenu</a></li><li><a href="module-DiscordModules.html">DiscordModules</a></li><li><a href="module-DiscordSelectors.html">DiscordSelectors</a></li><li><a href="module-DOMTools.html">DOMTools</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-Modals.html">Modals</a></li><li><a href="module-Patcher.html">Patcher</a></li><li><a href="module-PluginUpdater.html">PluginUpdater</a></li><li><a href="module-PluginUtilities.html">PluginUtilities</a></li><li><a href="module-Popouts.html">Popouts</a></li><li><a href="module-powercord_injector.html">powercord/injector</a></li><li><a href="module-ReactComponents.html">ReactComponents</a></li><li><a href="module-ReactTools.html">ReactTools</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-Toasts.html">Toasts</a></li><li><a href="module-Tooltip.html">Tooltip</a></li><li><a href="module-Utilities.html">Utilities</a></li><li><a href="module-WebpackModules.html">WebpackModules</a></li></ul><h3>Classes</h3><ul><li><a href="global.html#ArraySet">ArraySet</a></li><li><a href="global.html#BasicSourceMapConsumer">BasicSourceMapConsumer</a></li><li><a href="CJSImportProcessor.html">CJSImportProcessor</a></li><li><a href="CJSImportTransformer.html">CJSImportTransformer</a></li><li><a href="CommanderError.html">CommanderError</a></li><li><a href="CommandsAPI.html">CommandsAPI</a></li><li><a href="global.html#Compiler">Compiler</a></li><li><a href="CompressedObject.html">CompressedObject</a></li><li><a href="ConvertWorker.html">ConvertWorker</a></li><li><a href="Crc32Probe.html">Crc32Probe</a></li><li><a href="CSS.html">CSS</a></li><li><a href="DataLengthProbe.html">DataLengthProbe</a></li><li><a href="DataWorker.html">DataWorker</a></li><li><a href="DirEntry.html">DirEntry</a></li><li><a href="ESMImportTransformer.html">ESMImportTransformer</a></li><li><a href="FlateWorker.html">FlateWorker</a></li><li><a href="FSWatcher.html">FSWatcher</a></li><li><a href="GenericWorker.html">GenericWorker</a></li><li><a href="global.html#IndexedSourceMapConsumer">IndexedSourceMapConsumer</a></li><li><a href="JSX.html">JSX</a></li><li><a href="JSZip.html">JSZip</a></li><li><a href="KeybindsAPI.html">KeybindsAPI</a></li><li><a href="LabsAPI.html">LabsAPI</a></li><li><a href="Less.html">Less</a></li><li><a href="LessError.html">LessError</a></li><li><a href="global.html#MappingList">MappingList</a></li><li><a href="module.html#.exports">exports</a></li><li><a href="module-ContextMenu-ImageItem.html">ImageItem</a></li><li><a href="module-ContextMenu-ItemGroup.html">ItemGroup</a></li><li><a href="module-ContextMenu-Menu.html">Menu</a></li><li><a href="module-ContextMenu-MenuItem.html">MenuItem</a></li><li><a href="module-ContextMenu-SubMenuItem.html">SubMenuItem</a></li><li><a href="module-ContextMenu-TextItem.html">TextItem</a></li><li><a href="module-ContextMenu-ToggleItem.html">ToggleItem</a></li><li><a href="module-DiscordAPI.Channel.html">Channel</a></li><li><a href="module-DiscordAPI.Guild.html">Guild</a></li><li><a href="module-DiscordAPI.InsufficientPermissions.html">InsufficientPermissions</a></li><li><a href="module-DiscordAPI.Message.html">Message</a></li><li><a href="module-DiscordAPI.User.html">User</a></li><li><a href="module-DiscordAPI.UserSettings.html">UserSettings</a></li><li><a href="module-DOMTools.ClassName.html">ClassName</a></li><li><a href="module-DOMTools.DOMObserver.html">DOMObserver</a></li><li><a href="module-DOMTools.Selector.html">Selector</a></li><li><a href="module-PluginUtilities-Helpers.html">Helpers</a></li><li><a href="module-ReactTools-Reflection.html">Reflection</a></li><li><a href="module-Settings.ColorPicker.html">ColorPicker</a></li><li><a href="module-Settings.Dropdown.html">Dropdown</a></li><li><a href="module-Settings.FilePicker.html">FilePicker</a></li><li><a href="module-Settings.Keybind.html">Keybind</a></li><li><a href="module-Settings.RadioGroup.html">RadioGroup</a></li><li><a href="module-Settings.SettingField.html">SettingField</a></li><li><a href="module-Settings.SettingGroup.html">SettingGroup</a></li><li><a href="module-Settings.SettingPanel.html">SettingPanel</a></li><li><a href="module-Settings.Slider.html">Slider</a></li><li><a href="module-Settings.Switch.html">Switch</a></li><li><a href="module-Settings.Textbox.html">Textbox</a></li><li><a href="module-Tooltip-Tooltip.html">Tooltip</a></li><li><a href="module-WebpackModules-Filters.html">Filters</a></li><li><a href="module-WebpackModules-List.html">List</a></li><li><a href="module-WebpackModules-Listenable.html">Listenable</a></li><li><a href="module-WebpackModules-Screen.html">Screen</a></li><li><a href="NodejsStreamInputAdapter.html">NodejsStreamInputAdapter</a></li><li><a href="NodejsStreamOutputAdapter.html">NodejsStreamOutputAdapter</a></li><li><a href="OptionalChainingNullishTransformer.html">OptionalChainingNullishTransformer</a></li><li><a href="Plugin.html">Plugin</a></li><li><a href="Powercord.html">Powercord</a></li><li><a href="ReactDisplayNameTransformer.html">ReactDisplayNameTransformer</a></li><li><a href="RouterAPI.html">RouterAPI</a></li><li><a href="RpcAPI.html">RpcAPI</a></li><li><a href="SCSS.html">SCSS</a></li><li><a href="Section.html">Section</a></li><li><a href="SettingsAPI.html">SettingsAPI</a></li><li><a href="global.html#SourceMapGenerator">SourceMapGenerator</a></li><li><a href="global.html#SourceNode">SourceNode</a></li><li><a href="StreamHelper.html">StreamHelper</a></li><li><a href="Stylus.html">Stylus</a></li><li><a href="Updatable.html">Updatable</a></li><li><a href="Utf8DecodeWorker.html">Utf8DecodeWorker</a></li><li><a href="Utf8EncodeWorker.html">Utf8EncodeWorker</a></li><li><a href="ZipEntries.html">ZipEntries</a></li><li><a href="ZipEntry.html">ZipEntry</a></li><li><a href="ZipObject.html">ZipObject</a></li></ul><h3>Interfaces</h3><ul><li><a href="module-DiscordContextMenu-MenuControlItem.html">MenuControlItem</a></li><li><a href="module-DiscordContextMenu-MenuItem.html">MenuItem</a></li><li><a href="module-DiscordContextMenu-MenuRadioItem.html">MenuRadioItem</a></li><li><a href="module-DiscordContextMenu-MenuToggleItem.html">MenuToggleItem</a></li><li><a href="module-DiscordContextMenu-SubMenuItem.html">SubMenuItem</a></li><li><a href="module-DOMTools-Offset.html">Offset</a></li><li><a href="module-FilePicker.html">FilePicker</a></li><li><a href="module-Modals-Changelog.html">Changelog</a></li><li><a href="module-Settings-DropdownItem.html">DropdownItem</a></li><li><a href="module-Settings-RadioItem.html">RadioItem</a></li></ul><h3>Mixins</h3><ul><li><a href="FsEventsHandler.html">FsEventsHandler</a></li><li><a href="NodeFsHandler.html">NodeFsHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html"></a></li><li><a href="global.html#__extends">__extends</a></li><li><a href="global.html#__importDefault">__importDefault</a></li><li><a href="global.html#_init">_init</a></li><li><a href="global.html#_tsinterfacechecker">_tsinterfacechecker</a></li><li><a href="global.html#_utf8len">_utf8len</a></li><li><a href="global.html#absolute">absolute</a></li><li><a href="global.html#accumulate">accumulate</a></li><li><a href="global.html#addFile">addFile</a></li><li><a href="global.html#addHook">addHook</a></li><li><a href="global.html#addParent">addParent</a></li><li><a href="global.html#adjust">adjust</a></li><li><a href="global.html#alias">alias</a></li><li><a href="global.html#alpha">alpha</a></li><li><a href="global.html#AnsiEscapes">AnsiEscapes</a></li><li><a href="global.html#anymatch">anymatch</a></li><li><a href="global.html#applySourceMaps">applySourceMaps</a></li><li><a href="global.html#Arguments">Arguments</a></li><li><a href="global.html#array">array</a></li><li><a href="global.html#arrayLikeToArrayLike">arrayLikeToArrayLike</a></li><li><a href="global.html#arrayLikeToString">arrayLikeToString</a></li><li><a href="global.html#arrayToStringHelper">arrayToStringHelper</a></li><li><a href="global.html#assertColor">assertColor</a></li><li><a href="global.html#assertPresent">assertPresent</a></li><li><a href="global.html#assertString">assertString</a></li><li><a href="global.html#assertType">assertType</a></li><li><a href="global.html#Atblock">Atblock</a></li><li><a href="global.html#Atrule">Atrule</a></li><li><a href="global.html#Base">Base</a></li><li><a href="global.html#basename">basename</a></li><li><a href="global.html#baseParseSubscript">baseParseSubscript</a></li><li><a href="global.html#BasicType">BasicType</a></li><li><a href="global.html#basicTypes">basicTypes</a></li><li><a href="global.html#BinOp">BinOp</a></li><li><a href="global.html#blend">blend</a></li><li><a href="global.html#Block">Block</a></li><li><a href="global.html#blue">blue</a></li><li><a href="global.html#Boolean">Boolean</a></li><li><a href="global.html#braces">braces</a></li><li><a href="global.html#Call">Call</a></li><li><a href="global.html#camelcase">camelcase</a></li><li><a href="global.html#catch">catch</a></li><li><a href="global.html#charset">charset</a></li><li><a href="global.html#Charset">Charset</a></li><li><a href="global.html#checkEntryCRC32">checkEntryCRC32</a></li><li><a href="global.html#Checker">Checker</a></li><li><a href="global.html#checkImports">checkImports</a></li><li><a href="global.html#checkSupport">checkSupport</a></li><li><a href="global.html#clamp">clamp</a></li><li><a href="global.html#clampAlpha">clampAlpha</a></li><li><a href="global.html#clampDegrees">clampDegrees</a></li><li><a href="global.html#clampPercentage">clampPercentage</a></li><li><a href="global.html#coerce">coerce</a></li><li><a href="global.html#coerceArray">coerceArray</a></li><li><a href="global.html#coerceObject">coerceObject</a></li><li><a href="global.html#CoercionError">CoercionError</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#Command">Command</a></li><li><a href="global.html#comment">comment</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compareByGeneratedPositionsDeflated">compareByGeneratedPositionsDeflated</a></li><li><a href="global.html#compareByGeneratedPositionsInflated">compareByGeneratedPositionsInflated</a></li><li><a href="global.html#compareByOriginalPositions">compareByOriginalPositions</a></li><li><a href="global.html#compile">compile</a></li><li><a href="global.html#compileSelectors">compileSelectors</a></li><li><a href="global.html#component">component</a></li><li><a href="global.html#componentMap">componentMap</a></li><li><a href="global.html#Compressed">Compressed</a></li><li><a href="global.html#computeSourceMap">computeSourceMap</a></li><li><a href="global.html#computeSourceURL">computeSourceURL</a></li><li><a href="global.html#concat">concat</a></li><li><a href="global.html#config">config</a></li><li><a href="global.html#contentType">contentType</a></li><li><a href="global.html#contrast">contrast</a></li><li><a href="global.html#convert">convert</a></li><li><a href="global.html#convertCSS">convertCSS</a></li><li><a href="global.html#Converter">Converter</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#coremods">coremods</a></li><li><a href="global.html#crc32str">crc32str</a></li><li><a href="global.html#createCheckers">createCheckers</a></li><li><a href="global.html#createDebug">createDebug</a></li><li><a href="global.html#createFSEventsInstance">createFSEventsInstance</a></li><li><a href="global.html#createFsWatchInstance">createFsWatchInstance</a></li><li><a href="global.html#createPattern">createPattern</a></li><li><a href="global.html#crypto">crypto</a></li><li><a href="global.html#decode">decode</a></li><li><a href="global.html#defaultMimes">defaultMimes</a></li><li><a href="global.html#define">define</a></li><li><a href="global.html#deflate">deflate</a></li><li><a href="global.html#Deflate">Deflate</a></li><li><a href="global.html#deflateRaw">deflateRaw</a></li><li><a href="global.html#delay">delay</a></li><li><a href="global.html#deprecate">deprecate</a></li><li><a href="global.html#DepsResolver">DepsResolver</a></li><li><a href="global.html#DetailContext">DetailContext</a></li><li><a href="global.html#dirname">dirname</a></li><li><a href="global.html#disable">disable</a></li><li><a href="global.html#disableAll">disableAll</a></li><li><a href="global.html#doQuickSort">doQuickSort</a></li><li><a href="global.html#DOT_LITERAL">DOT_LITERAL</a></li><li><a href="global.html#Each">Each</a></li><li><a href="global.html#emit">emit</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#enableAll">enableAll</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#encloseBrace">encloseBrace</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#encodingTypes">encodingTypes</a></li><li><a href="global.html#enumlit">enumlit</a></li><li><a href="global.html#enumtype">enumtype</a></li><li><a href="global.html#error">error</a></li><li><a href="global.html#escapeNode">escapeNode</a></li><li><a href="global.html#Evaluator">Evaluator</a></li><li><a href="global.html#EventEmitter">EventEmitter</a></li><li><a href="global.html#events">events</a></li><li><a href="global.html#exceedsLimit">exceedsLimit</a></li><li><a href="global.html#expandRange">expandRange</a></li><li><a href="global.html#Expression">Expression</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#extension">extension</a></li><li><a href="global.html#extname">extname</a></li><li><a href="global.html#FACTOR_TABLE">FACTOR_TABLE</a></li><li><a href="global.html#Feature">Feature</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#findCompression">findCompression</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#fmtLong">fmtLong</a></li><li><a href="global.html#fmtShort">fmtShort</a></li><li><a href="global.html#formatArgs">formatArgs</a></li><li><a href="global.html#formatException">formatException</a></li><li><a href="global.html#formatJSXStringValueLiteral">formatJSXStringValueLiteral</a></li><li><a href="global.html#formatJSXTextLiteral">formatJSXTextLiteral</a></li><li><a href="global.html#formatJSXTextReplacement">formatJSXTextReplacement</a></li><li><a href="global.html#formatters">formatters</a></li><li><a href="global.html#Frame">Frame</a></li><li><a href="global.html#fromHSLA">fromHSLA</a></li><li><a href="global.html#fromRGBA">fromRGBA</a></li><li><a href="global.html#fromVLQSigned">fromVLQSigned</a></li><li><a href="global.html#fs">fs</a></li><li><a href="global.html#FSEventsWatchers">FSEventsWatchers</a></li><li><a href="global.html#fsWatchBroadcast">fsWatchBroadcast</a></li><li><a href="global.html#FsWatchInstances">FsWatchInstances</a></li><li><a href="global.html#func">func</a></li><li><a href="global.html#Function">Function</a></li><li><a href="global.html#functions">functions</a></li><li><a href="global.html#generateCentralDirectoryEnd">generateCentralDirectoryEnd</a></li><li><a href="global.html#generateDataDescriptors">generateDataDescriptors</a></li><li><a href="global.html#generateDosExternalFileAttr">generateDosExternalFileAttr</a></li><li><a href="global.html#generatedPositionAfter">generatedPositionAfter</a></li><li><a href="global.html#generateUnixExternalFileAttr">generateUnixExternalFileAttr</a></li><li><a href="global.html#generateWorker">generateWorker</a></li><li><a href="global.html#generateZipParts">generateZipParts</a></li><li><a href="global.html#genIterator">genIterator</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getAppDir">getAppDir</a></li><li><a href="global.html#getArg">getArg</a></li><li><a href="global.html#getCache">getCache</a></li><li><a href="global.html#getClassInfo">getClassInfo</a></li><li><a href="global.html#getCompression">getCompression</a></li><li><a href="global.html#getDeclarationInfo">getDeclarationInfo</a></li><li><a href="global.html#getFormattedTokens">getFormattedTokens</a></li><li><a href="global.html#getIdentifierNames">getIdentifierNames</a></li><li><a href="global.html#getSucraseContext">getSucraseContext</a></li><li><a href="global.html#getTSImportedNames">getTSImportedNames</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#getTypeOf">getTypeOf</a></li><li><a href="global.html#green">green</a></li><li><a href="global.html#Group">Group</a></li><li><a href="global.html#gzip">gzip</a></li><li><a href="global.html#hasOwnProperty">hasOwnProperty</a></li><li><a href="global.html#hasShadowedGlobals">hasShadowedGlobals</a></li><li><a href="global.html#hsl">hsl</a></li><li><a href="global.html#hsla">hsla</a></li><li><a href="global.html#HSLA">HSLA</a></li><li><a href="global.html#hue">hue</a></li><li><a href="global.html#humanReadableArgName">humanReadableArgName</a></li><li><a href="global.html#Ident">Ident</a></li><li><a href="global.html#identifyShadowedGlobals">identifyShadowedGlobals</a></li><li><a href="global.html#identity">identity</a></li><li><a href="global.html#If">If</a></li><li><a href="global.html#iface">iface</a></li><li><a href="global.html#Image">Image</a></li><li><a href="global.html#imageSize">imageSize</a></li><li><a href="global.html#Import">Import</a></li><li><a href="global.html#importFile">importFile</a></li><li><a href="global.html#imports">imports</a></li><li><a href="global.html#incrementNodeInspectorPort">incrementNodeInspectorPort</a></li><li><a href="global.html#Inflate">Inflate</a></li><li><a href="global.html#inflate">inflate</a></li><li><a href="global.html#inflateRaw">inflateRaw</a></li><li><a href="global.html#inherits">inherits</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#inspect">inspect</a></li><li><a href="global.html#inspectOpts">inspectOpts</a></li><li><a href="global.html#instances">instances</a></li><li><a href="global.html#intersection">intersection</a></li><li><a href="global.html#isAccessModifier">isAccessModifier</a></li><li><a href="global.html#isAnyObject">isAnyObject</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isAsyncOperation">isAsyncOperation</a></li><li><a href="global.html#isBlob">isBlob</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isDate">isDate</a></li><li><a href="global.html#isEmptyArray">isEmptyArray</a></li><li><a href="global.html#isEmptyObject">isEmptyObject</a></li><li><a href="global.html#isEmptyString">isEmptyString</a></li><li><a href="global.html#isError">isError</a></li><li><a href="global.html#isFile">isFile</a></li><li><a href="global.html#isFullArray">isFullArray</a></li><li><a href="global.html#isFullObject">isFullObject</a></li><li><a href="global.html#isFullString">isFullString</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isInvalidBrace">isInvalidBrace</a></li><li><a href="global.html#isMap">isMap</a></li><li><a href="global.html#isNaNValue">isNaNValue</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#isNullOrUndefined">isNullOrUndefined</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isObjectLike">isObjectLike</a></li><li><a href="global.html#isOpenOrClose">isOpenOrClose</a></li><li><a href="global.html#isPlainObject">isPlainObject</a></li><li><a href="global.html#isPrimitive">isPrimitive</a></li><li><a href="global.html#isPromise">isPromise</a></li><li><a href="global.html#isRegExp">isRegExp</a></li><li><a href="global.html#isRegistered">isRegistered</a></li><li><a href="global.html#isSet">isSet</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#isSymbol">isSymbol</a></li><li><a href="global.html#isType">isType</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#isWeakMap">isWeakMap</a></li><li><a href="global.html#isWeakSet">isWeakSet</a></li><li><a href="global.html#join">join</a></li><li><a href="global.html#json">json</a></li><li><a href="global.html#jsonCharacterEncoding">jsonCharacterEncoding</a></li><li><a href="global.html#jsonMimeTypeRegex">jsonMimeTypeRegex</a></li><li><a href="global.html#Keyframes">Keyframes</a></li><li><a href="global.html#lessFolder">lessFolder</a></li><li><a href="global.html#Lexer">Lexer</a></li><li><a href="global.html#lightness">lightness</a></li><li><a href="global.html#lit">lit</a></li><li><a href="global.html#Literal">Literal</a></li><li><a href="global.html#literal">literal</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#loadImplementation">loadImplementation</a></li><li><a href="global.html#localstorage">localstorage</a></li><li><a href="global.html#log">log</a></li><li><a href="global.html#lookup">lookup</a></li><li><a href="global.html#lookupIndex">lookupIndex</a></li><li><a href="global.html#lruMemoize">lruMemoize</a></li><li><a href="global.html#luminosity">luminosity</a></li><li><a href="global.html#makeTable">makeTable</a></li><li><a href="global.html#Mapping">Mapping</a></li><li><a href="global.html#match">match</a></li><li><a href="global.html#matchPatterns">matchPatterns</a></li><li><a href="global.html#math">math</a></li><li><a href="global.html#Media">Media</a></li><li><a href="global.html#Member">Member</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#middleware">middleware</a></li><li><a href="global.html#mime">mime</a></li><li><a href="global.html#mixin">mixin</a></li><li><a href="global.html#Module">Module</a></li><li><a href="global.html#modules">modules</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#names">names</a></li><li><a href="global.html#Namespace">Namespace</a></li><li><a href="global.html#newBlob">newBlob</a></li><li><a href="global.html#next">next</a></li><li><a href="global.html#Node">Node</a></li><li><a href="global.html#nodes">nodes</a></li><li><a href="global.html#NoopContext">NoopContext</a></li><li><a href="global.html#normalize">normalize</a></li><li><a href="global.html#Normalizer">Normalizer</a></li><li><a href="global.html#Null">Null</a></li><li><a href="global.html#NullCache">NullCache</a></li><li><a href="global.html#Object">Object</a></li><li><a href="global.html#Observable">Observable</a></li><li><a href="global.html#oldJson">oldJson</a></li><li><a href="global.html#operate">operate</a></li><li><a href="global.html#opt">opt</a></li><li><a href="global.html#Option">Option</a></li><li><a href="global.html#optionalWrap">optionalWrap</a></li><li><a href="global.html#outputHelpIfRequested">outputHelpIfRequested</a></li><li><a href="global.html#pad">pad</a></li><li><a href="global.html#param">param</a></li><li><a href="global.html#Params">Params</a></li><li><a href="global.html#params">params</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#ParseError">ParseError</a></li><li><a href="global.html#parseIdentifierStatement">parseIdentifierStatement</a></li><li><a href="global.html#parseMaybeAssign">parseMaybeAssign</a></li><li><a href="global.html#parseObject">parseObject</a></li><li><a href="global.html#Parser">Parser</a></li><li><a href="global.html#parseSourceMapInput">parseSourceMapInput</a></li><li><a href="global.html#parseSpec">parseSpec</a></li><li><a href="global.html#parseString">parseString</a></li><li><a href="global.html#picomatch">picomatch</a></li><li><a href="global.html#PluginLoader">PluginLoader</a></li><li><a href="global.html#PluginManager">PluginManager</a></li><li><a href="global.html#plural">plural</a></li><li><a href="global.html#POSIX_REGEX_SOURCE">POSIX_REGEX_SOURCE</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#prefixClasses">prefixClasses</a></li><li><a href="global.html#prepareContent">prepareContent</a></li><li><a href="global.html#pretty">pretty</a></li><li><a href="global.html#processConstructor">processConstructor</a></li><li><a href="global.html#processEntity">processEntity</a></li><li><a href="global.html#Property">Property</a></li><li><a href="global.html#pseudoSelectors">pseudoSelectors</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#Query">Query</a></li><li><a href="global.html#QueryList">QueryList</a></li><li><a href="global.html#querystring">querystring</a></li><li><a href="global.html#quickSort">quickSort</a></li><li><a href="global.html#randomIntInRange">randomIntInRange</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeToPattern">rangeToPattern</a></li><li><a href="global.html#raw">raw</a></li><li><a href="global.html#readdirp">readdirp</a></li><li><a href="global.html#readWord">readWord</a></li><li><a href="global.html#recursiveSearch">recursiveSearch</a></li><li><a href="global.html#red">red</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#relative">relative</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#Renderer">Renderer</a></li><li><a href="global.html#replace">replace</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#Return">Return</a></li><li><a href="global.html#rgb">rgb</a></li><li><a href="global.html#RGBA">RGBA</a></li><li><a href="global.html#rgba">rgba</a></li><li><a href="global.html#rmdirRf">rmdirRf</a></li><li><a href="global.html#Root">Root</a></li><li><a href="global.html#runSerial">runSerial</a></li><li><a href="global.html#s">s</a></li><li><a href="global.html#saturation">saturation</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#scan">scan</a></li><li><a href="global.html#Scope">Scope</a></li><li><a href="global.html#search">search</a></li><li><a href="global.html#selectColor">selectColor</a></li><li><a href="global.html#Selector">Selector</a></li><li><a href="global.html#selectorExists">selectorExists</a></li><li><a href="global.html#SelectorParser">SelectorParser</a></li><li><a href="global.html#selectorTokens">selectorTokens</a></li><li><a href="global.html#setFSEventsListener">setFSEventsListener</a></li><li><a href="global.html#setFsWatchFileListener">setFsWatchFileListener</a></li><li><a href="global.html#setFsWatchListener">setFsWatchListener</a></li><li><a href="global.html#shouldElideDefaultExport">shouldElideDefaultExport</a></li><li><a href="global.html#shouldPreferGlobalPromise">shouldPreferGlobalPromise</a></li><li><a href="global.html#skipFieldName">skipFieldName</a></li><li><a href="global.html#skipToNextClassElement">skipToNextClassElement</a></li><li><a href="global.html#SourceMap">SourceMap</a></li><li><a href="global.html#SourceMapper">SourceMapper</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#Stack">Stack</a></li><li><a href="global.html#startsWithLowerCase">startsWithLowerCase</a></li><li><a href="global.html#String">String</a></li><li><a href="global.html#string2binary">string2binary</a></li><li><a href="global.html#stringToArrayLike">stringToArrayLike</a></li><li><a href="global.html#stylus">stylus</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html#subscribers">subscribers</a></li><li><a href="global.html#substr">substr</a></li><li><a href="global.html#Supports">Supports</a></li><li><a href="global.html#swap">swap</a></li><li><a href="global.html#SyntaxError">SyntaxError</a></li><li><a href="global.html#syntaxError">syntaxError</a></li><li><a href="global.html#tan">tan</a></li><li><a href="global.html#Ternary">Ternary</a></li><li><a href="global.html#tests">tests</a></li><li><a href="global.html#then">then</a></li><li><a href="global.html#thenify">thenify</a></li><li><a href="global.html#thenifyAll">thenifyAll</a></li><li><a href="global.html#Token">Token</a></li><li><a href="global.html#TokenType">TokenType</a></li><li><a href="global.html#toSetString">toSetString</a></li><li><a href="global.html#toVLQSigned">toVLQSigned</a></li><li><a href="global.html#TParamList">TParamList</a></li><li><a href="global.html#TProp">TProp</a></li><li><a href="global.html#transformTo">transformTo</a></li><li><a href="global.html#transformZipOutput">transformZipOutput</a></li><li><a href="global.html#transparentify">transparentify</a></li><li><a href="global.html#trim">trim</a></li><li><a href="global.html#true">true</a></li><li><a href="global.html#tryAutoDetect">tryAutoDetect</a></li><li><a href="global.html#tsParseModifier">tsParseModifier</a></li><li><a href="global.html#tsParseTypePredicateOrAssertsPrefix">tsParseTypePredicateOrAssertsPrefix</a></li><li><a href="global.html#tty">tty</a></li><li><a href="global.html#TType">TType</a></li><li><a href="global.html#tuple">tuple</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#typedParseConditional">typedParseConditional</a></li><li><a href="global.html#typeMap">typeMap</a></li><li><a href="global.html#types_2">types_2</a></li><li><a href="global.html#UnaryOp">UnaryOp</a></li><li><a href="global.html#unexpected">unexpected</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#unit">unit</a></li><li><a href="global.html#Unit">Unit</a></li><li><a href="global.html#unitMap">unitMap</a></li><li><a href="global.html#unquote">unquote</a></li><li><a href="global.html#unregister">unregister</a></li><li><a href="global.html#unregisterAll">unregisterAll</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#unwrap">unwrap</a></li><li><a href="global.html#updatePosition">updatePosition</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#use">use</a></li><li><a href="global.html#useColors">useColors</a></li><li><a href="global.html#utf8decode">utf8decode</a></li><li><a href="global.html#utf8encode">utf8encode</a></li><li><a href="global.html#utils">utils</a></li><li><a href="global.html#VError">VError</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#visit">visit</a></li><li><a href="global.html#Visitor">Visitor</a></li><li><a href="global.html#warn">warn</a></li><li><a href="global.html#watch">watch</a></li><li><a href="global.html#webpack">webpack</a></li><li><a href="global.html#WINDOWS_CHARS">WINDOWS_CHARS</a></li><li><a href="global.html#withCallback">withCallback</a></li><li><a href="global.html#wrap">wrap</a></li><li><a href="global.html#ZeresPluginLibrary">ZeresPluginLibrary</a></li><li><a href="global.html#zip">zip</a></li><li><a href="global.html#ZipFileWorker">ZipFileWorker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Mar 08 2021 15:13:56 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
