@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <title>ParticleConverterConverter</title>
+    <style>
+        body { background-color: darkolivegreen }
+        #upload {
+            position: relative;
+            margin: auto;
+            position: absolute;
+            left:0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 35%;
+            height: 65px;
+
+            background-color: #202020;
+        }
+
+        #upload-title {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+            width: 65%;
+            height: 100%;
+
+            background-color: #151515;
+        }
+
+        #upload-input {
+            display: flex;
+            position: absolute;
+
+            left: 65%;
+            bottom: -32.5%;
+            width: 35%;
+            height: 100%;
+        }
+    </style>
+    <body>
+        <div id="upload">
+            <b id="upload-title" style="color:white; font-size:150%; font-family:Arial, Helvetica, sans-serif">Upload</b>
+            <input id="upload-input" type="file" accept=".mcfunction" style="color: white; font-family:Arial, Helvetica, sans-serif">
+        </div>
+        <script>
+            const PATTERN_PARTICLE_TYPE = /### ParticleType: (.+)/i
+            const PATTERN_PARTICLE_OFFSET = /(?:\^|~)[+-]?([0-9]*[.])?[0-9]+/g
+
+            const PATTERN_DUST_OPTIONS = /\/?particle (minecraft:)?dust (.+) (.+) (.+) (.+)/i
+            const PATTERN_DUST_TRANSITION = /\/?particle (minecraft:)?dust_color_transition (.+) (.+) (.+) (.+) (.+) (.+) (.+)/i
+
+            const PATTERN_FILE_EXTENSION = /\.\w+$/i
+
+            let input = document.getElementById("upload-input")
+            input.addEventListener("change", processFiles)
+
+            function processFiles() {
+                const files = input.files
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i]
+                    file.text().then(contents => convert(file.name, contents))
+                }
+            }
+
+            async function convert(name, contents) {
+                const type = contents.match(PATTERN_PARTICLE_TYPE)[1]
+
+                let dustOptions = "new Particle.DustOptions(Color.fromRGB(0, 0, 0), 1.0f);"
+                let dustTransition = "new Particle.DustTransition(Color.fromRGB(0, 0, 0), Color.fromRGB(255, 255, 255), 1.0f);"
+
+                let particleFormat = [ "world.spawnParticle(PARTICLE, centre, 1, ", 0, ", ", 0, ", ", 0 ]
+
+                switch (type.toLowerCase()) {
+                    case "dust":
+                        const dustData = contents.match(PATTERN_DUST_OPTIONS)[0].split(" ")
+                        
+                        const dustColour = `Color.fromRGB(${parseFloat(dustData[2])*255}, ${parseFloat(dustData[3])*255}, ${parseFloat(dustData[4])*255})`
+                        const dustSize = parseFloat(dustData[5])
+
+                        dustOptions = `new Particle.DustOptions(${dustColour}, ${dustSize}f);`
+                        particleFormat.push(", DUST_OPTIONS);")
+                        break;
+                    case "dust_color_transition":
+                        const transitionData = contents.match(PATTERN_DUST_TRANSITION)[0].split(" ")
+
+                        const fromColour = `Color.fromRGB(${parseFloat(dustData[2])*255}, ${parseFloat(dustData[3])*255}, ${parseFloat(dustData[4])*255})`
+                        const toColour = `Color.fromRGB(${parseFloat(dustData[5])*255}, ${parseFloat(dustData[6])*255}, ${parseFloat(dustData[7])*255})`
+
+                        const transitionSize = parseFloat(dustData[8])
+
+                        dustTransition = `new Particle.DustTransition(${fromColour}, ${toColour}, ${transitionSize}f);`
+                        particleFormat.push(", DUST_TRANSITION);")
+                        break;
+                    default:
+                        particleFormat.push(");")
+                        break;
+                }
+
+            const fileName = name.replace(PATTERN_FILE_EXTENSION, "")
+            const gen = [
+                `import org.bukkit.*;\n\n`,
+
+                `public class Effect${fileName} {\n\t`,
+                `private static final Particle PARTICLE = Particle.REDSTONE;\n\n\t`,
+
+                `private static final Particle.DustOptions DUST_OPTIONS =\n\t\t\t${dustOptions}\n\t`,
+                `private static final Particle.DustTransition DUST_TRANSITION =\n\t\t\t${dustTransition}\n\n\t`,
+
+                `public static void play(final Location centre) {\n\t\t`,
+                `final World world = centre.getWorld();\n`
+            ]
+
+            for (line of contents.split("\n")) {
+                const offset = line.match(PATTERN_PARTICLE_OFFSET)
+                if (offset == null)
+                    continue;
+                
+                particleFormat[1] = offset[0].substring(1)
+                particleFormat[3] = offset[1].substring(1)
+                particleFormat[5] = offset[2].substring(1)
+
+                gen.push("\n\t\t")
+                gen.push(particleFormat.join(""))
+            }
+
+            gen.push("\n\t}\n}")
+
+            let temp = window.document.createElement("a");
+            temp.download = `Effect${fileName}.java`;
+            temp.href = window.URL.createObjectURL(new Blob(gen, { type: "octet/stream" }));
+
+            document.body.appendChild(temp);
+            temp.click();
+            document.body.removeChild(temp);
+        }
+        </script>
+    </body>
+</html>
