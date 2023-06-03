@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <title>BingSearchGenerator</title>
+    <body>
+        <script>
+            const BING_QUERY_BASE = "https://bing.com/search?q="
+            const BING_QUERY_DELAY_CLOSE = 1000
+
+            const MAX_DAILY_POINTS = 90
+            const POINTS_PER_QUERY = 3
+
+            let timestamp = Date.now()
+
+            async function randomString() {
+                timestamp *= 1.01
+                return Math.floor(timestamp).toString(16)
+            }
+
+            let queries = [ ]
+            function generateQuery() {
+                let index
+                const p = new Promise(resolve => {
+                    randomString()
+                        .then(query => window.open(BING_QUERY_BASE+query, "_blank"))
+                        .then(window => setTimeout(() => { 
+                            window.close() 
+                            resolve()
+                            delete queries[index]
+                        }, BING_QUERY_DELAY_CLOSE))
+                })
+
+                index = queries.push(p)
+                return p
+            }
+
+            for (let points = 0; points < MAX_DAILY_POINTS; points += POINTS_PER_QUERY) {
+                generateQuery()
+            }
+
+            Promise.all(queries).then(() => window.open("", "_self").close())
+        </script>
+    </body>
+</html>
